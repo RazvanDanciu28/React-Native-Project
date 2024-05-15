@@ -24,9 +24,10 @@ export interface IRegister {
     onSubmit: (email: string, password: string) => void;
     goToLogin: () => void;
     onRegisterSuccess: () => void;
+    goToHomePage: () => void;
 }
 
-const Register: React.FC<IRegister> = ({onSubmit, goToLogin, onRegisterSuccess}) => {
+const Register: React.FC<IRegister> = ({onSubmit, goToLogin, onRegisterSuccess, goToHomePage}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -46,6 +47,10 @@ const Register: React.FC<IRegister> = ({onSubmit, goToLogin, onRegisterSuccess})
 
             <Button onPress={goToLogin}>
                 <Text>Alerady have an account? Login here!</Text>
+            </Button>
+
+            <Button onPress={goToHomePage}>
+                <Text>Back to Home Page</Text>
             </Button>
         </Container>
     )

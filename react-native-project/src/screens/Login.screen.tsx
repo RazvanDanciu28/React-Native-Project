@@ -17,6 +17,10 @@ const LoginScreen = () => {
         navigation.navigate(AuthRouteNames.REGISTER);
     };
 
+    const handleGoToHomePage = () => {
+        navigation.navigate(AuthRouteNames.HOME_PAGE);
+    }
+
     const handleSubmit = async (email: string, password: string) => {
         try {
             await login(email, password);
@@ -26,7 +30,7 @@ const LoginScreen = () => {
         }
     };
 
-    return <Login onSubmit={handleSubmit} goToRegister={handleGoToRegister} onLoginSuccess={handleLoginSuccess} />;
+    return <Login onSubmit={handleSubmit} goToRegister={handleGoToRegister} onLoginSuccess={handleLoginSuccess} goToHomePage={handleGoToHomePage}/>;
 }
 
 export default LoginScreen;

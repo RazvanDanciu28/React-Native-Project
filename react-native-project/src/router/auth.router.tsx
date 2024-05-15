@@ -5,7 +5,7 @@ import { Text } from "react-native";
 import HomePageScreen from "../screens/HomePage.screen";
 import LoginScreen from "../screens/Login.screen";
 import RegisterScreen from "../screens/Register.screen";
-import UserDetailScreen from "../screens/UserDetails.screen";
+import UserDetailsScreen from "../screens/UserDetails.screen";
 
 
 
@@ -44,7 +44,7 @@ const authRoutes = (
         {/* user details */}
         <AuthStack.Screen 
             name={AuthRouteNames.USER_DETAILS}
-            component={UserDetailScreen}
+            component={UserDetailsScreen}
             options={{
                 headerTitle: (props) => <Text {...props}>User Details Page</Text>
             }}

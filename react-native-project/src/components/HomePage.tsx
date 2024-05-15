@@ -13,9 +13,10 @@ const Button = styled.TouchableOpacity``;
 export interface IHomePage {
     goToLogin: () => void;
     goToRegister: () => void;
+    goToUserDetails: () => void;
 }
 
-const HomePage: React.FC<IHomePage> = ({goToLogin, goToRegister}) => {
+const HomePage: React.FC<IHomePage> = ({goToLogin, goToRegister, goToUserDetails}) => {
     return (
         <Container>
             <Button onPress={goToLogin}>
@@ -25,6 +26,12 @@ const HomePage: React.FC<IHomePage> = ({goToLogin, goToRegister}) => {
             <Button onPress={goToRegister}>
                 Register
             </Button>
+
+            <Button onPress={goToUserDetails}>
+                UserDetails
+            </Button>
         </Container>
     )
 }
+
+export default HomePage;

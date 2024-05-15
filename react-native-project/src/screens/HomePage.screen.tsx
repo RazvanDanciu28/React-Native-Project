@@ -15,7 +15,11 @@ const HomePageScreen = () => {
         navigation.navigate(AuthRouteNames.REGISTER);
     }
 
-    return <HomePage goToLogin={handleGoToLogin} goToRegister={handleGoToRegister}/>
+    const handeGoToUserDetails = () => {
+        navigation.navigate(AuthRouteNames.USER_DETAILS);
+    }
+
+    return <HomePage goToLogin={handleGoToLogin} goToRegister={handleGoToRegister} goToUserDetails={handeGoToUserDetails}/>
 }
 
 export default HomePageScreen;

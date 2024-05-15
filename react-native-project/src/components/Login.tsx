@@ -24,11 +24,12 @@ export interface ILogin {
     onSubmit: (email: string, password: string) => void;
     goToRegister: () => void;
     onLoginSuccess: () => void;
+    goToHomePage: () => void;
     
 }
 
 //de adaugat chestii
-const Login: React.FC<ILogin> = ({onSubmit, goToRegister, onLoginSuccess}) => {
+const Login: React.FC<ILogin> = ({onSubmit, goToRegister, onLoginSuccess, goToHomePage}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -48,6 +49,10 @@ const Login: React.FC<ILogin> = ({onSubmit, goToRegister, onLoginSuccess}) => {
 
             <Button onPress={goToRegister}>
                 <Text>Don't have an account? Register here</Text>
+            </Button>
+
+            <Button onPress={goToHomePage}>
+                <Text>Back to Home Page</Text>
             </Button>
         </Container>
     )
