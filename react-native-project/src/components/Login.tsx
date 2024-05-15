@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components/native";
+import { Text } from "react-native";
 
 const Container = styled.View`
     width: 100%;
@@ -21,28 +22,33 @@ const Button = styled.TouchableOpacity``
 
 export interface ILogin {
     onSubmit: (email: string, password: string) => void;
+    goToRegister: () => void;
+    onLoginSuccess: () => void;
     
 }
 
 //de adaugat chestii
-const Login: React.FC<ILogin> = ({onSubmit}) => {
+const Login: React.FC<ILogin> = ({onSubmit, goToRegister, onLoginSuccess}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    // const handleSubmit - de facut
+    const handleSubmit = async () => {
+        await onSubmit(email, password);
+        onLoginSuccess();
+    }
 
     return (
         <Container>
             <Input keyboardType="email-address" onChangeText={setEmail} placeholder="Type Email" />
             <Input secureTextEntry onChangeText={setPassword} placeholder="Type Password" />
-            {/* de vazut */}
-            {/* <Button onPress={handleSubmit}>
-                <Text>Submit</Text>
-            </Button> */}
-            {/* de vazut si asta */}
-            {/* <Button onPress={de vazut}>
+            
+            <Button onPress={handleSubmit}>
+                <Text>Login</Text>
+            </Button>
+
+            <Button onPress={goToRegister}>
                 <Text>Don't have an account? Register here</Text>
-            </Button> */}
+            </Button>
         </Container>
     )
 }
