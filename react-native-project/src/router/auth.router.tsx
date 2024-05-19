@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { AuthRouteNames } from "./route-names";
 import { Text } from "react-native";
+import React from 'react';
 
 import HomePageScreen from "../screens/HomePage.screen";
 import LoginScreen from "../screens/Login.screen";

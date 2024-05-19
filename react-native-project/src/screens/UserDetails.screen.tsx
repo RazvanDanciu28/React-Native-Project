@@ -3,6 +3,7 @@ import { AuthRouteNames } from "../router/route-names";
 import { useAuth } from "../hooks/authContext";
 import UserDetails from '../components/UserDetails';
 import { View, Text } from "react-native";
+import React from 'react';
 
 type AuthNavigationProp = NavigationProp<Record<AuthRouteNames, undefined>>;
 

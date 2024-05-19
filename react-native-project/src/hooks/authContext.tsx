@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import {login, register} from "../api";
 
 interface IUserDetails {
@@ -13,7 +13,7 @@ interface IAuthContext {
     register: (email: string, password: string) => Promise<void>;
 }
 
-const authContext = createContext<IAuthContext | undefined>(undefined);
+const AuthContext = createContext<IAuthContext | undefined>(undefined);
 
 export const AuthContextProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
     const [token, setToken] = useState<string>('');
@@ -40,15 +40,15 @@ export const AuthContextProvider: React.FC<{children: React.ReactNode}> = ({chil
     }
 
     return (
-        <authContext.Provider value={{token, userDetails, login: handleLogin, register: handleRegister}}>
+        <AuthContext.Provider value={{token, userDetails, login: handleLogin, register: handleRegister}}>
             {children}
-        </authContext.Provider>
+        </AuthContext.Provider>
     )
 };
 
 
 export const useAuth = () => {
-    const context = useContext(authContext);
+    const context = useContext(AuthContext);
     if (context === undefined) {
         throw new Error('')
     }

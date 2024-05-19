@@ -2,6 +2,7 @@ import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { AuthRouteNames } from "../router/route-names";
 import { useAuth } from "../hooks/authContext";
 import Register from "../components/Register"; 
+import React from 'react';
 
 type AuthNavigationProp = NavigationProp<Record<AuthRouteNames, undefined>>;
 

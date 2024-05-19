@@ -1,6 +1,7 @@
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { AuthRouteNames } from "../router/route-names";
 import HomePage from "../components/HomePage"; 
+import React from 'react';
 
 type AuthNavigationProp = NavigationProp<Record<AuthRouteNames, undefined>>;
 
