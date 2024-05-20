@@ -35,7 +35,7 @@ export const AuthContextProvider: React.FC<{children: React.ReactNode}> = ({chil
     const handleRegister = async (email: string, password: string) => {
         try {
             const response = await register(email, password);
-            setToken(response.accesToken);
+            setToken(response.accessToken);
         } catch (error) {
             throw new Error("Register went wrong! " + error);
         }

@@ -1,4 +1,4 @@
-const baseUrl = "https://malamute-enabled-yak.ngrok-free.app";
+const baseUrl = "http://163.172.177.98:8081";
 
 const baseHeaders = {
     "Content-Type": 'application/json',
@@ -45,10 +45,10 @@ export const register = async(email: string, password: string) => {
     }
 
     const data = await result.json();
-    const userDetails = await fetchUserDetails(data.accesToken);
+    const userDetails = await fetchUserDetails(data.accessToken);
 
     return {
-        accesToken: data.accesToken,
+        accessToken: data.accessToken,
         userDetails: userDetails
     }
 };
