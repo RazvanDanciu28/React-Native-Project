@@ -54,8 +54,4 @@ const Register: React.FC<IRegister> = ({onSubmit, goToLogin, goToHomePage}) => {
     )
 }
 
-function onRegisterSuccess() {
-    throw new Error("Function not implemented.");
-}
-
 export default Register;

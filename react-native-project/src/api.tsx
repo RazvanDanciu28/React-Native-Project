@@ -5,7 +5,7 @@ const baseHeaders = {
     "Accept": 'application/json'
 };
 
-export const login = async(email: string, password: string) : Promise<{accessToken: string; userDetails: any}>=> {
+export const login = async(email: string, password: string) : Promise<{accessToken: string}>=> {
     const result = await fetch(`${baseUrl}/auth/login`, {
         method: 'POST',
         headers: {
@@ -21,15 +21,10 @@ export const login = async(email: string, password: string) : Promise<{accessTok
     }
 
     const data = await result.json();
-    const userDetails = await fetchUserDetails(data.accessToken);
-
-    return {
-        accessToken: data.accessToken,
-        userDetails: userDetails
-    };
+    return data;
 };
 
-export const register = async(email: string, password: string) => {
+export const register = async(email: string, password: string) : Promise<{accessToken: string}>=> {
     const result = await fetch(`${baseUrl}/auth/register`, {
         method: 'POST',
         headers: {
@@ -45,19 +40,12 @@ export const register = async(email: string, password: string) => {
     }
 
     const data = await result.json();
-    const userDetails = await fetchUserDetails(data.accessToken);
-
-    return {
-        accessToken: data.accessToken,
-        userDetails: userDetails
-    }
+    return data;
 };
 
 export const fetchUserDetails = async(token: string) => {
     const response = await fetch(`${baseUrl}/user/details/me`, {
-        method: "GET",
         headers: {
-          ...baseHeaders,
           Authorization: `Bearer ${token}`,
         },
     });
