@@ -23,17 +23,15 @@ const Button = styled.TouchableOpacity``
 export interface IRegister {
     onSubmit: (email: string, password: string) => void;
     goToLogin: () => void;
-    onRegisterSuccess: () => void;
     goToHomePage: () => void;
 }
 
-const Register: React.FC<IRegister> = ({onSubmit, goToLogin, onRegisterSuccess, goToHomePage}) => {
+const Register: React.FC<IRegister> = ({onSubmit, goToLogin, goToHomePage}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = async () => {
-        await onSubmit(email, password);
-        onRegisterSuccess();
+    const handleSubmit = () => {
+        onSubmit(email, password);
     };
 
     return (

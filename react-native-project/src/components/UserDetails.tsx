@@ -6,10 +6,7 @@ import styled from "styled-components/native";
 const Button = styled.TouchableOpacity``
 
 interface IUserDetails {
-    userDetails: {
-        id: number
-        email: string
-    }
+    userDetails: any;
     goToHomePage: () => void;
 }
 

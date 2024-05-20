@@ -23,19 +23,16 @@ const Button = styled.TouchableOpacity``
 export interface ILogin {
     onSubmit: (email: string, password: string) => void;
     goToRegister: () => void;
-    onLoginSuccess: () => void;
     goToHomePage: () => void;
     
 }
 
-//de adaugat chestii
-const Login: React.FC<ILogin> = ({onSubmit, goToRegister, onLoginSuccess, goToHomePage}) => {
+const Login: React.FC<ILogin> = ({onSubmit, goToRegister, goToHomePage}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = async () => {
-        await onSubmit(email, password);
-        onLoginSuccess();
+    const handleSubmit = () => {
+        onSubmit(email, password);
     }
 
     return (

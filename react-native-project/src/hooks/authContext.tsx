@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import {login, register} from "../api";
+import {login, register, fetchUserDetails} from "../api";
 
 interface IUserDetails {
     id: number;
@@ -8,22 +8,25 @@ interface IUserDetails {
 
 interface IAuthContext {
     token: string;
-    userDetails: IUserDetails | null;
+    userDetails: () => Promise<any>;
     login: (email: string, password: string) => Promise<void>;
     register: (email: string, password: string) => Promise<void>;
 }
 
-const AuthContext = createContext<IAuthContext | undefined>(undefined);
+const AuthContext = createContext<IAuthContext>({
+    token: '',
+    userDetails: async() => {},
+    login: async() => {},
+    register: async() => {}
+});
 
 export const AuthContextProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
     const [token, setToken] = useState<string>('');
-    const [userDetails, setUserDetails] = useState<IUserDetails | null>(null);
 
     const handleLogin = async (email: string, password: string) => {
         try {
             const response = await login(email, password);
             setToken(response.accessToken);
-            setUserDetails(response.userDetails);
         } catch (error) {
             throw new Error("Login went wrong " + error);
         }
@@ -33,14 +36,24 @@ export const AuthContextProvider: React.FC<{children: React.ReactNode}> = ({chil
         try {
             const response = await register(email, password);
             setToken(response.accesToken);
-            setUserDetails(response.userDetails);
         } catch (error) {
             throw new Error("Register went wrong! " + error);
         }
     }
 
+    const handleFetchUserDetails = async () => {
+        if (token){
+            try {
+                const data = await fetchUserDetails(token);
+                return data;
+            } catch(error) {
+                throw new Error("Fetching user details went wrong! " + error);
+            }
+        }
+    }
+
     return (
-        <AuthContext.Provider value={{token, userDetails, login: handleLogin, register: handleRegister}}>
+        <AuthContext.Provider value={{token, userDetails: handleFetchUserDetails, login: handleLogin, register: handleRegister}}>
             {children}
         </AuthContext.Provider>
     )

@@ -31,7 +31,7 @@ const RegisterScreen = () => {
         }
     };
 
-    return <Register onSubmit={handleSubmit} goToLogin={handleGoToLogin} onRegisterSuccess={handleRegisterSuccess} goToHomePage={handleGoToHomePage}/>;
+    return <Register onSubmit={handleSubmit} goToLogin={handleGoToLogin} goToHomePage={handleGoToHomePage}/>;
 }
 
 export default RegisterScreen;

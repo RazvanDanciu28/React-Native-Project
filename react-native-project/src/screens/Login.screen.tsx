@@ -31,7 +31,7 @@ const LoginScreen = () => {
         }
     };
 
-    return <Login onSubmit={handleSubmit} goToRegister={handleGoToRegister} onLoginSuccess={handleLoginSuccess} goToHomePage={handleGoToHomePage}/>;
+    return <Login onSubmit={handleSubmit} goToRegister={handleGoToRegister} goToHomePage={handleGoToHomePage}/>;
 }
 
 export default LoginScreen;

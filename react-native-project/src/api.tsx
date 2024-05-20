@@ -53,7 +53,7 @@ export const register = async(email: string, password: string) => {
     }
 };
 
-const fetchUserDetails = async(token: string) => {
+export const fetchUserDetails = async(token: string) => {
     const response = await fetch(`${baseUrl}/user/details/me`, {
         method: "GET",
         headers: {
@@ -66,5 +66,6 @@ const fetchUserDetails = async(token: string) => {
         throw new Error("Fetching user details went wrong");
     }
 
-    return await response.json();
+    const data = await response.json();
+    return data;
 }
