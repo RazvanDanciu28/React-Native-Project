@@ -52,3 +52,5 @@ const authRoutes = (
         />
     </AuthStack.Navigator>
 )
+
+export default authRoutes;
